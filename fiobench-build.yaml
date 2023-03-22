@@ -1,0 +1,37 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    description: Keeps track of changes in the application image
+  name: fiobench
+spec: {}
+...
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app.kubernetes.io/name: fiobench
+    app: fiobench
+  name: fiobench
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: fiobench:latest
+  source:
+    # Expect a local directory to be streamed to OpenShift as a build source
+    type: Git
+    git: 
+      uri: https://github.ibm.com/Shawn-Houston/fio-bench.git
+#      uri: http://gitlab.libvirt8/shouston/fiobench.git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      # Find the image build instructions in ./Dockerfile
+      dockerfilePath: Containerfile
+  triggers:
+  - type: ImageChange
+  - type: ConfigChange
+...
