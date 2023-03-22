@@ -9,7 +9,7 @@ data:
     ioengine=psync
     direct=1
     buffered=0
-    size=100G
+    size=100M
     iodepth=100
     numjobs=1
     group_reporting
@@ -42,8 +42,7 @@ spec:
       containers:
       - name: fiobench-rwo
         image: fiobench
-        command: ["fio"]
-        args: ["/configs/fio.job", "--eta=never", "--filename_format=$jobnum.$filenum", "--directory=/scratch/"]
+        command: ["fio.sh"]
         volumeMounts:
         - name: fio-config-vol
           mountPath: /configs
@@ -62,6 +61,6 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 5Ti
+          storage: 1Gi
 #          storage: 100Gi
 ...

@@ -9,7 +9,7 @@ data:
     ioengine=psync
     direct=1
     buffered=0
-    size=100G
+    size=100M
     iodepth=100
     numjobs=1
     group_reporting
@@ -46,8 +46,7 @@ spec:
       containers:
       - name: fiobench-rwx
         image: fiobench:latest
-        command: ["sh"]
-        args: ["-c", "echo ${HOSTNAME} && mkdir -p /scratch/${HOSTNAME} && fio /configs/fio.job --eta=never --directory=/scratch/${HOSTNAME}"]
+        command: ["fio.sh"]
         volumeMounts:
         - name: fio-config-vol
           mountPath: /configs
@@ -81,11 +80,11 @@ apiVersion: v1
 metadata:
   name: fio-claim
 spec:
-#  storageClassName: ocs-storagecluster-cephfs
+  storageClassName: ocs-storagecluster-cephfs
   accessModes:
   - ReadWriteMany
   resources:
     requests:
-      storage: 50Ti
-#      storage: 100Gi
+#      storage: 50Ti
+      storage: 10Gi
 ...

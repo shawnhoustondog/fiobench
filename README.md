@@ -10,17 +10,17 @@ oc set image-lookup fiobench
 
 ## testing RWX
 oc create -f fio_RWX_pvc.yaml  
-oc rsh deploymentconfig.apps/fiobench-rwx -n my-fio-benchmark
+oc rsh deploymentconfig.apps/fiobench-rwx
 
 ### Scale up
-oc scale --replicas=X deployment.apps/fiobench-rwx
+oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx
 
 ## testing RWO
 oc create -f fio_RWO_pvc.yaml  
-oc rsh deploymentconfig.apps/fiobench-rwo -n my-fio-benchmark
+oc rsh statefulset.apps/fiobench-rwo
 
 ### Scale up
-oc scale --replicas=X statefulset.apps/fiobench-rwo
+oc scale --replicas=0 deploymentconfig.apps/fiobench-rwo
 
 ## clean up
 
