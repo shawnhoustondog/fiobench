@@ -24,8 +24,7 @@ spec:
     # Expect a local directory to be streamed to OpenShift as a build source
     type: Git
     git: 
-      uri: https://github.ibm.com/Shawn-Houston/fio-bench.git
-#      uri: http://gitlab.libvirt8/shouston/fiobench.git
+      uri: https://github.com/shawnhoustondog/fiobench.git
   strategy:
     type: Docker
     dockerStrategy:
