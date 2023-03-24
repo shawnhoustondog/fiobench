@@ -9,16 +9,17 @@ data:
     ioengine=psync
     direct=1
     buffered=0
-    size=10G
-    iodepth=1000
-    numjobs=100
+    size=100M
+    iodepth=100
+    numjobs=1
     group_reporting
     refill_buffers
-    rwmixread=80
+    rwmixread=50
     norandommap
     randrepeat=0
-    percentage_random=0
+    percentage_random=50
     bs=512K
     buffer_compress_percentage=50
     rw=read
     [testjob]
+...
