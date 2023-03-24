@@ -4,6 +4,8 @@ based on: https://joshua-robinson.medium.com/storage-benchmarking-with-fio-in-ku
 ## create project and build fedora-fio image
 oc new-project my-fio-benchmark  
 oc create -f fiobench-build.yaml
+#oc create -f web-results.yaml
+oc create -f configs.yaml
 
 ### for RWO
 oc set image-lookup fiobench
@@ -32,7 +34,10 @@ oc delete -f fio_RWO_pvc.yaml
 oc delete pvc -l app=fiobench-rwo
 
 ### all
+oc delete -f configs.yaml
+#oc delete -f web-results.yaml
 oc delete -f fiobench-build.yaml
+
 
 ### if you have permissions
 oc delete ns my-fio-benchmark
