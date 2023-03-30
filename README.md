@@ -3,9 +3,9 @@ based on: https://joshua-robinson.medium.com/storage-benchmarking-with-fio-in-ku
 
 ## create project and build fedora-fio image
 oc new-project my-fio-benchmark  
-oc create -f fiobench-build.yaml
-oc create -f web-results.yaml
-oc apply -f configs.yaml
+oc create -f fiobench-build.yaml  
+oc create -f web-results.yaml  
+oc apply -f configs.yaml  
 
 oc rsh deploymentconfig.apps/web-results
 
@@ -13,38 +13,38 @@ oc rsh deploymentconfig.apps/web-results
 oc create -f fio_RWX_pvc.yaml  
 
 ### Scale up
-oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx
-oc rsh statefulset.apps/fiobench-rwx
+oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx  
+oc rsh statefulset.apps/fiobench-rwx  
 
 ## testing RWO
-oc set image-lookup fiobench
+oc set image-lookup fiobench  
 oc create -f fio_RWO_pvc.yaml  
-oc rsh statefulset.apps/fiobench-rwo
+oc rsh statefulset.apps/fiobench-rwo  
 
 ### Scale up
-oc scale --replicas=0 StatefulSet.apps/fiobench-rwo
-oc delete pvc -l app=fiobench-rwo
+oc scale --replicas=0 StatefulSet.apps/fiobench-rwo  
+oc delete pvc -l app=fiobench-rwo  
 
 ## clean up
 
 ### RWX
-oc delete -f fio_RWX_pvc.yaml
+oc delete -f fio_RWX_pvc.yaml  
 
 ### RWO
 oc delete -f fio_RWO_pvc.yaml  
-oc delete pvc -l app=fiobench-rwo
+oc delete pvc -l app=fiobench-rwo  
 
 ### all
-oc delete -f configs.yaml
-oc delete -f web-results.yaml
-oc delete -f fiobench-build.yaml
+oc delete -f configs.yaml  
+oc delete -f web-results.yaml  
+oc delete -f fiobench-build.yaml  
 
 
 ### if you have permissions
-oc delete ns my-fio-benchmark
+oc delete ns my-fio-benchmark  
 
 ## Changing fio.job config file
-oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx
-oc scale --replicas=0 deploymentconfig.apps/web-results
-
-Then scale back up...
+oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx  
+oc scale --replicas=0 deploymentconfig.apps/web-results  
+  
+Then scale back up...  
