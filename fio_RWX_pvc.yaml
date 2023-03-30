@@ -27,6 +27,8 @@ spec:
           mountPath: /configs
         - name: fio-data
           mountPath: /scratch
+        - name: webroot-mount
+          mountPath: /output
         imagePullPolicy: Always
         resources: {}
       restartPolicy: Always
@@ -37,6 +39,9 @@ spec:
       - name: fio-data
         persistentVolumeClaim:
           claimName: fio-claim
+      - name: webroot-mount
+        persistentVolumeClaim:
+          claimName: webroot
   test: false
   triggers:
   - type: ConfigChange

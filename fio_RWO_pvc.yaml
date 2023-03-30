@@ -23,10 +23,15 @@ spec:
           mountPath: /configs
         - name: fio-data
           mountPath: /scratch
+        - name: webroot-mount
+          mountPath: /output
       volumes:
       - name: fio-config-vol
         configMap:
           name: fio-job-config
+      - name: webroot-mount
+        persistentVolumeClaim:
+          claimName: webroot
   volumeClaimTemplates:
   - metadata:
       name: fio-data

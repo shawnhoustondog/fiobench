@@ -1,0 +1,185 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: webroot
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: ocs-external-storagecluster-cephfs
+  volumeMode: Filesystem
+...
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  annotations:
+    description: Keeps track of changes in the application image
+  name: web-results
+spec: {}
+...
+---
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: web-results
+  labels:
+    app: web-results
+    app.kubernetes.io/component: web-results
+    app.kubernetes.io/instance: web-results
+    app.kubernetes.io/name: php
+    app.kubernetes.io/part-of: web-results-app
+    app.openshift.io/runtime: php
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'web-results:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: 'registry.redhat.io/rhel8/php-74'
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'http://gitlab.libvirt8/shouston/fiobench.git'
+  triggers:
+  - type: ImageChange
+  - type: ConfigChange
+  runPolicy: Serial
+...
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: web-results
+  labels:
+    app: web-results
+    app.kubernetes.io/component: web-results
+    app.kubernetes.io/instance: web-results
+    app.kubernetes.io/name: php
+    app.kubernetes.io/part-of: web-results-app
+    app.openshift.io/runtime: php
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - web-results
+        from:
+          kind: ImageStreamTag
+          name: 'web-results:latest'
+    - type: ConfigChange
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: web-results
+    deploymentconfig: web-results
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-results
+        deploymentconfig: web-results
+    spec:
+      volumes:
+        - name: webroot-mount
+          persistentVolumeClaim:
+            claimName: webroot
+        - name: fio-config-vol
+          configMap:
+            name: fio-job-config
+      containers:
+        - name: web-results
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - name: fio-config-vol
+              mountPath: /configs
+            - name: webroot-mount
+              mountPath: /opt/app-root/files
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+...
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: web-results
+  labels:
+    app: web-results
+    app.kubernetes.io/component: web-results
+    app.kubernetes.io/instance: web-results
+    app.kubernetes.io/name: php
+    app.kubernetes.io/part-of: web-results-app
+    app.openshift.io/runtime: php
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  selector:
+    app: web-results
+    deploymentconfig: web-results
+  type: ClusterIP
+  sessionAffinity: None
+...
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: web-results
+  labels:
+    app: web-results
+    app.kubernetes.io/component: web-results
+    app.kubernetes.io/instance: web-results
+    app.kubernetes.io/name: php
+    app.kubernetes.io/part-of: web-results-app
+    app.openshift.io/runtime: php
+spec:
+  to:
+    kind: Service
+    name: web-results
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
+...

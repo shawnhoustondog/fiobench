@@ -2,11 +2,15 @@
 
 SCRATCH=/scratch
 CONFIGS=/configs
+OUTPUT=/output
 SLEEP=1h
 
-echo ${HOSTNAME}
+# start up delay...
+sleep 60s
+
 mkdir -p ${SCRATCH}/${HOSTNAME}
 
-fio $CONFIGS/fio.job --eta=never --directory=${SCRATCH}/${HOSTNAME} --output=${SCRATCH}/fiobench.${HOSTNAME}
+fio $CONFIGS/fio.job --eta=never --directory=${SCRATCH}/${HOSTNAME} --output=${OUTPUT}/fiobench.${HOSTNAME}
 
-sleep ${SLEEP}
+# sleep forever
+while true;do sleep 1h;done

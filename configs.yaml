@@ -20,6 +20,6 @@ data:
     percentage_random=50
     bs=512K
     buffer_compress_percentage=50
-    rw=read
+    rw=randrw
     [testjob]
 ...
