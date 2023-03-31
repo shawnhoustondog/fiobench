@@ -65,6 +65,6 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-#      storage: 50Ti
-      storage: 10Gi
+      storage: 50Ti
+#      storage: 10Gi
 ...
