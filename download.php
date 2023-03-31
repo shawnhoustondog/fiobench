@@ -5,7 +5,7 @@ if(isset($_REQUEST["file"])){
 
     /* Test whether the file name contains illegal characters
     such as "../" using the regular expression */
-    if(preg_match('/^[^.][-a-z0-9_.]+[a-z]$/i', $file)){
+    if(preg_match('/^[^.][-a-z0-9_.]+[a-z0-9]$/i', $file)){
         preg_match('/[^-]*-(.*)/', $file, $filename);
         $filepath = "/opt/app-root/files/" . $file;
         $mimetype = "application/octet-stream";
