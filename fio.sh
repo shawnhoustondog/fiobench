@@ -6,7 +6,7 @@ OUTPUT=/output
 SLEEP=1h
 
 # start up delay...
-sleep 60s
+sleep 30s
 
 mkdir -p ${SCRATCH}/${HOSTNAME}
 
