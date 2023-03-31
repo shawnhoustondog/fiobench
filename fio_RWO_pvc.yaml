@@ -36,7 +36,7 @@ spec:
   - metadata:
       name: fio-data
     spec:
-      storageClassName: ocs-storagecluster-ceph-rbd
+#      storageClassName: ocs-storagecluster-ceph-rbd
       accessModes:
       - ReadWriteOnce
       resources:

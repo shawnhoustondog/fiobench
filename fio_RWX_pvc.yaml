@@ -60,7 +60,7 @@ apiVersion: v1
 metadata:
   name: fio-claim
 spec:
-  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: ocs-storagecluster-cephfs
   accessModes:
   - ReadWriteMany
   resources:
