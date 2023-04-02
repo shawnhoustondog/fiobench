@@ -14,7 +14,13 @@ oc create -f fio_RWX_pvc.yaml
 
 ### Scale up
 oc scale --replicas=0 deploymentconfig.apps/fiobench-rwx  
-oc rsh statefulset.apps/fiobench-rwx  
+oc rsh deploymentconfig.apps/fiobench-rwx  
+
+## testing RWX with one PV per DeployementConfig
+ls -1 RWX_PVCs/*| xargs -L 1 oc create -f  
+// this one is dangerous, but much faster (parallel)  
+ls -1 RWX_PVCs/*| xargs -L 1 oc delete --wait=false -f  
+
 
 ## testing RWO
 oc set image-lookup fiobench  

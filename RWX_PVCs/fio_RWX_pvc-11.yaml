@@ -2,21 +2,21 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  name: fiobench-rwx
+  name: fiobench-rwx-11
   labels:
     app: fiobench-rwx
 spec:
   replicas: 1
   selector:
     app: fiobench-rwx
-    deploymentconfig: fiobench-rwx
+    deploymentconfig: fiobench-rwx-11
   strategy:
     resources: {}
   template:
     metadata:
       labels:
         app: fiobench-rwx
-        deploymentconfig: fiobench-rwx
+        deploymentconfig: fiobench-rwx-11
     spec:
       containers:
       - name: fiobench-rwx
@@ -38,7 +38,7 @@ spec:
           name: fio-job-config
       - name: fio-data
         persistentVolumeClaim:
-          claimName: fio-claim
+          claimName: fio-claim-11
       - name: webroot-mount
         persistentVolumeClaim:
           claimName: webroot
@@ -58,7 +58,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: fio-claim
+  name: fio-claim-11
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
   storageClassName: fake-fs-sc
