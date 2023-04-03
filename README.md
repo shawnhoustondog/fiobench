@@ -34,10 +34,11 @@ oc delete pvc -l app=fiobench-rwo
 ## clean up
 
 ### RWX
-oc delete -f fio_RWX_pvc.yaml  
+oc delete DeploymentConfig -l app=fiobench-rwx  
+oc delete pvc -l app=fiobench-rwx  
 
 ### RWO
-oc delete -f fio_RWO_pvc.yaml  
+oc delete DeploymentConfig -l app=fiobench-rwx  
 oc delete pvc -l app=fiobench-rwo  
 
 ### all
