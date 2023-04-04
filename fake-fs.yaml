@@ -1,0 +1,479 @@
+# chcon --type container_file_t /mnt/dirs-to-access-in-pod
+# chmod 777 /mnt/dirs-to-access-in-pod
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: fake-fs-sc
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+reclaimPolicy: Retain
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-1
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-1"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-2
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-2"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-3
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-3"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-4
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-4"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-5
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-5"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-playtoy2-pv-6
+  labels:
+    kubernetes.io/hostname: openshift-worker-0.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/playtoy2-1234/pv-6"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-0.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-1
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-1"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-2
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-2"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-3
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-3"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-4
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-4"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-5
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-5"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-doggyone-pv-6
+  labels:
+    kubernetes.io/hostname: openshift-worker-1.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/doggyone-1234/pv-6"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-1.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-1
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-1"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-2
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-2"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-3
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-3"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-4
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-4"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-5
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-5"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fake-fs-virtman-pv-6
+  labels:
+    kubernetes.io/hostname: openshift-worker-2.testme3.libvirt2.smh
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/fake-fs-1234/virtman-1234/pv-6"
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: fake-fs-sc
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - openshift-worker-2.testme3.libvirt2.smh
+...
