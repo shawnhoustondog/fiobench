@@ -33,19 +33,19 @@ spec:
         - name: fio-data-0
           mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-1
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr2.bt23005.pbm.ihost.com
         - name: fio-data-2
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr3.bt23005.pbm.ihost.com
         - name: fio-data-3
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr4.bt23005.pbm.ihost.com
         - name: fio-data-4
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr5.bt23005.pbm.ihost.com
         - name: fio-data-5
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr6.bt23005.pbm.ihost.com
         - name: fio-data-6
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr7.bt23005.pbm.ihost.com
         - name: fio-data-7
-          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
+          mountPath: /scratch/x29wkr8.bt23005.pbm.ihost.com
         - name: webroot-mount
           mountPath: /output
         imagePullPolicy: Always
