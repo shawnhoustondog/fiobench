@@ -1,0 +1,16 @@
+# -- pv-test.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-test
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+  csi:
+    driver: spectrumscale.csi.ibm.com
+    volumeHandle: 0;2;15724131849388687902;D364A8C0:643802D9;;fake-fs-test;/mnt/gpfs01/fake-fs-test
+  storageClassName: fake-fs-sc
+  persistentVolumeReclaimPolicy: Retain

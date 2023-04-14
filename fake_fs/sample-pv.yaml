@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pvc-fake-fs-sc-1
+spec:
+  capacity:
+    storage: 1Gi
+  csi:
+    driver: openshift-storage.cephfs.csi.ceph.com
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: ocs-storagecluster-cephfs
+  volumeMode: Filesystem

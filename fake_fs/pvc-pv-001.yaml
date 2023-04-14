@@ -1,0 +1,14 @@
+# -- pvc-pv-001.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-pv-001
+  namespace: <PVC namespace> 
+spec:
+  volumeName: pv-001
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: fake-fs-sc

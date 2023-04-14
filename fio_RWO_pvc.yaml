@@ -5,7 +5,7 @@ metadata:
   name: fiobench-rwo
 spec:
   serviceName: fiobench-rwo
-  replicas: 3
+  replicas: 60
   selector:
     matchLabels:
       app: fiobench-rwo
@@ -14,13 +14,6 @@ spec:
       labels:
         app: fiobench-rwo
     spec:
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities: 
-          drop: ["ALL"]
-        runAsNonRoot: true
-        seccompProfile: 
-          type: "RuntimeDefault"
       containers:
       - name: fiobench-rwo
         image: fiobench
@@ -44,11 +37,12 @@ spec:
       name: fio-data
     spec:
 #      storageClassName: ocs-storagecluster-ceph-rbd
-      storageClassName: fake-fs-sc
+#      storageClassName: fake-fs-sc
+      storageClassName: ibm-spectrum-scale-light-sc
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 100Gi
-#          storage: 100Gi
+          storage: 10Gi
+#          storage: 1Gi
 ...

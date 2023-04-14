@@ -22,11 +22,30 @@ spec:
       - name: fiobench-rwx
         image: fiobench:latest
         command: ["fio.sh"]
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
         volumeMounts:
         - name: fio-config-vol
           mountPath: /configs
-        - name: fio-data
-          mountPath: /scratch
+        - name: fio-data-0
+          mountPath: /scratch/openshift-worker-0.testme.libvirt2.smh
+        - name: fio-data-1
+          mountPath: /scratch/openshift-worker-1.testme.libvirt2.smh
+        - name: fio-data-2
+          mountPath: /scratch/openshift-worker-2.testme.libvirt2.smh
+        - name: fio-data-3
+          mountPath: /scratch/openshift-worker-3.testme.libvirt2.smh
+        - name: fio-data-4
+          mountPath: /scratch/openshift-worker-4.testme.libvirt2.smh
+        - name: fio-data-5
+          mountPath: /scratch/openshift-worker-5.testme.libvirt2.smh
+        - name: fio-data-6
+          mountPath: /scratch/openshift-worker-6.testme.libvirt2.smh
+        - name: fio-data-7
+          mountPath: /scratch/openshift-worker-7.testme.libvirt2.smh
         - name: webroot-mount
           mountPath: /output
         imagePullPolicy: Always
@@ -36,9 +55,30 @@ spec:
       - name: fio-config-vol
         configMap:
           name: fio-job-config
-      - name: fio-data
+      - name: fio-data-0
         persistentVolumeClaim:
-          claimName: fio-claim
+          claimName: fio-claim-0
+      - name: fio-data-1
+        persistentVolumeClaim:
+          claimName: fio-claim-1
+      - name: fio-data-2
+        persistentVolumeClaim:
+          claimName: fio-claim-2
+      - name: fio-data-3
+        persistentVolumeClaim:
+          claimName: fio-claim-3
+      - name: fio-data-4
+        persistentVolumeClaim:
+          claimName: fio-claim-4
+      - name: fio-data-5
+        persistentVolumeClaim:
+          claimName: fio-claim-5
+      - name: fio-data-6
+        persistentVolumeClaim:
+          claimName: fio-claim-6
+      - name: fio-data-7
+        persistentVolumeClaim:
+          claimName: fio-claim-7
       - name: webroot-mount
         persistentVolumeClaim:
           claimName: webroot
@@ -58,14 +98,127 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: fio-claim
+  name: fio-claim-0
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
-  storageClassName: fake-fs-sc
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
   accessModes:
   - ReadWriteMany
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-1
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-2
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-3
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-4
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-5
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-6
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
+...
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fio-claim-7
+spec:
+#  storageClassName: ocs-storagecluster-cephfs
+#  storageClassName: fake-fs-sc
+  storageClassName: gpfs01-sc
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+#      storage: 50Ti
+      storage: 10Gi
 ...

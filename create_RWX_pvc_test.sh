@@ -1,9 +1,8 @@
 #! /bin/bash
 
-YAML=""
 
-for i in {0..399}; do
-  read -r -d '' TEMP << EOM
+for i in {0..9}; do
+  read -r -d '' YAML[$i] << EOM
 ---
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
@@ -69,7 +68,8 @@ metadata:
     app: fiobench-rwx
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
-  storageClassName: ibm-spectrum-scale-light-sc
+#  storageClassName: ibm-spectrum-scale-light-sc
+  storageClassName: fake-fs-sc
   accessModes:
   - ReadWriteMany
   resources:
@@ -78,11 +78,9 @@ spec:
       storage: 10Gi
 ...
 EOM
-
-  YAML="$YAML
-$TEMP"
 done
 
-#echo "$YAML"
-echo "$YAML" | oc create -f -
+for i in ${!YAML[@]}; do
+  echo "${YAML[$i]}" | oc create -f -
+done
 

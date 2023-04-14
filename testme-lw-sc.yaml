@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ibm-spectrum-scale-light-sc
+provisioner: spectrumscale.csi.ibm.com
+parameters:
+  volBackendFs: "ibm-spectrum-scale-fs-fs-rbc-17011854518898651948"
+  volDirBasePath: "pvc-volumes-test"
+reclaimPolicy: Delete

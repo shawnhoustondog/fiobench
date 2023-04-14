@@ -1,0 +1,14 @@
+# -- pvc-pv-test.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-pv-test
+  namespace: testme 
+spec:
+  volumeName: pv-test
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: fake-fs-sc

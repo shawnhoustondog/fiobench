@@ -61,11 +61,11 @@ metadata:
   name: fio-claim-6
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
-  storageClassName: fake-fs-sc
+  storageClassName: ibm-spectrum-scale-light-sc
   accessModes:
   - ReadWriteMany
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 10Gi
 ...

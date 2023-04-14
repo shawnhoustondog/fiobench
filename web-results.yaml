@@ -9,6 +9,7 @@ spec:
   resources:
     requests:
       storage: 1G
+  storageClassName: fake-fs-sc
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: ocs-external-storagecluster-cephfs
   volumeMode: Filesystem
@@ -53,7 +54,8 @@ spec:
   source:
     type: Git
     git:
-      uri: https://github.com/shawnhoustondog/fiobench.git
+      uri: 'http://gitlab.libvirt8/shouston/fiobench.git'
+#      uri: https://github.com/shawnhoustondog/fiobench.git
   triggers:
   - type: ImageChange
   - type: ConfigChange
