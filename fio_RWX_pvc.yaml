@@ -21,7 +21,7 @@ spec:
       containers:
       - name: fiobench-rwx
         image: fiobench:latest
-        command: ["fio.sh"]
+        command: ['cd $NODE_NAME && fio.sh']
         env:
           - name: NODE_NAME
             valueFrom:
@@ -31,21 +31,21 @@ spec:
         - name: fio-config-vol
           mountPath: /configs
         - name: fio-data-0
-          mountPath: /scratch/openshift-worker-0.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-1
-          mountPath: /scratch/openshift-worker-1.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-2
-          mountPath: /scratch/openshift-worker-2.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-3
-          mountPath: /scratch/openshift-worker-3.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-4
-          mountPath: /scratch/openshift-worker-4.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-5
-          mountPath: /scratch/openshift-worker-5.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-6
-          mountPath: /scratch/openshift-worker-6.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: fio-data-7
-          mountPath: /scratch/openshift-worker-7.testme.libvirt2.smh
+          mountPath: /scratch/x29wkr1.bt23005.pbm.ihost.com
         - name: webroot-mount
           mountPath: /output
         imagePullPolicy: Always
@@ -108,7 +108,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -124,7 +124,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -140,7 +140,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -156,7 +156,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -172,7 +172,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -188,7 +188,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -204,7 +204,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
 ---
 kind: PersistentVolumeClaim
@@ -220,5 +220,5 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 10Gi
+      storage: 100Gi
 ...
