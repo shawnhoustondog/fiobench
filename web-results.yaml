@@ -9,7 +9,7 @@ spec:
   resources:
     requests:
       storage: 1G
-  storageClassName: fake-fs-sc
+  storageClassName: scale-csi-ess3500
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: ocs-external-storagecluster-cephfs
   volumeMode: Filesystem
