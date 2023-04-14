@@ -102,7 +102,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -118,7 +118,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -134,7 +134,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -150,7 +150,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -166,7 +166,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -182,7 +182,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -198,7 +198,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
@@ -214,7 +214,7 @@ metadata:
 spec:
 #  storageClassName: ocs-storagecluster-cephfs
 #  storageClassName: fake-fs-sc
-  storageClassName: gpfs01-sc
+  storageClassName: scale-lwsc
   accessModes:
   - ReadWriteMany
   resources:
