@@ -27,7 +27,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-        args: ["-c", "cd $NODE_NAME && fio.sh"]
+        args: ["-c", "cd /scratch/$NODE_NAME && fio.sh"]
         volumeMounts:
         - name: fio-config-vol
           mountPath: /configs
