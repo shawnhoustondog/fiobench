@@ -109,7 +109,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -125,7 +125,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -141,7 +141,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -157,7 +157,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -173,7 +173,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -189,7 +189,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -205,7 +205,7 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
 ---
 kind: PersistentVolumeClaim
@@ -221,5 +221,5 @@ spec:
   resources:
     requests:
 #      storage: 50Ti
-      storage: 100Gi
+      storage: 1Ti
 ...
